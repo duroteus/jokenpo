@@ -1,0 +1,60 @@
+<meta charset="UTF-8" />
+
+<script>
+  function jokenpo() {
+    const options = ["Pedra", "Papel", "Tesoura"];
+    const randomNumber = Math.floor(Math.random() * 3);
+    const machineOption = options[randomNumber];
+
+    var playersChoice = prompt("Escolha entre Pedra, Papel ou Tesoura.");
+    var playerOption =
+      playersChoice[0].toUpperCase() + playersChoice.substring(1).toLowerCase();
+
+    while (
+      playerOption != "Pedra" &&
+      playerOption != "Papel" &&
+      playerOption != "Tesoura"
+    ) {
+      alert("Insira uma resposta válida");
+      var playersChoice = prompt("Escolha Pedra, Papel ou Tesoura:");
+      var playerOption =
+        playersChoice[0].toUpperCase() +
+        playersChoice.substring(1).toLowerCase();
+    }
+
+    if (machineOption == playerOption) {
+      alert(
+        `O jogador escolheu ${playerOption} e a máquina escolheu ${machineOption}. Deu empate.`
+      );
+    } else if (
+      (machineOption == "Pedra" && playerOption == "Papel") ||
+      (machineOption == "Papel" && playerOption == "Tesoura") ||
+      (machineOption == "Tesoura" && playerOption == "Pedra")
+    ) {
+      alert(
+        `O jogador escolheu ${playerOption} e a máquina escolheu ${machineOption}. O jogador venceu!`
+      );
+    } else {
+      alert(
+        `O jogador escolheu ${playerOption} e a máquina escolheu ${machineOption}. O jogador perdeu.`
+      );
+    }
+  }
+
+  jokenpo();
+
+  var rematch = prompt("Deseja jogar novamente? (S/N)").toUpperCase();
+
+  while (rematch != "S" || rematch != "N") {
+    if (rematch == "S") {
+      jokenpo();
+    } else if (rematch == "N") {
+      alert("Obrigado por jogar! Até mais!");
+      break;
+    } else {
+      alert("Escolha uma opção válida! (S para sim ou N para não)");
+    }
+
+    var rematch = prompt("Deseja jogar novamente? (S/N)").toUpperCase();
+  }
+</script>
